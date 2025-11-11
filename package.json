@@ -1,0 +1,25 @@
+{
+  "name": "localareabarber",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+  "start": "node database/db.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dtaruh/LocalAreaBarber.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dtaruh/LocalAreaBarber/issues"
+  },
+  "homepage": "https://github.com/dtaruh/LocalAreaBarber#readme",
+  "dependencies": {
+    "better-sqlite3": "^12.4.1"
+  }
+}
