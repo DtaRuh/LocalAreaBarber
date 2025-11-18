@@ -1,16 +1,24 @@
 // create my database
 // Using better-sqlite3 because it is a synchronus db - no async functions
 const Database = require('better-sqlite3');
-const db = new Database('./barbers.db');
+// import the File System module
+const fs = require('fs');
 const path = require('path');
 
-const query = `
-	CREATE TABLE users ( 
-		id INTEGER PRIMARY KEY,
-		name STRING NOT NULL, 
-		username STRING NOT NULL UNIQUE
-	)
-`;
+// Create the database file
+const db = new Database(path.join(__dirname, 'barbers.db'), { 
+	// logs every SQL Query executed to the console
+	verbose: console.log
+});
 
-db.exec(query);
+// Manually enable foreign keys 
+// PRAGMA statements let you configure database behavior 
+db.pragma('foreign_keys = ON');
+
+// Read and execute the table plan from the schema.sql
+const schemaPath = path.join(__dirname, 'schema.sql');
+const schema = fs.readFileSync(schemaPath, 'utf-8');
+db.exec(schema);
+
+console.log('Database initialised successfully');
 module.exports = db;
